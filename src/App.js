@@ -10,6 +10,7 @@ import './App.css';
 function App() {
 
   const[photos,setPhotos]=useState([]);
+  const[photoIndex,setPhotoIndex]=useState(0);
   
   useEffect(() => {
     getPhotos();
@@ -17,11 +18,11 @@ function App() {
   }, [])
   
   const getPhotos = async () =>{
-  const response= await Axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
-  setPhotos([...photos,...response.data])
- 
-  
-}
+    const response= await Axios.get(`https://jsonplaceholder.typicode.com/photos?_start=${photoIndex}&_limit=10`)
+    setPhotos([...photos,...response.data])
+    setPhotoIndex(Math.floor((Math.random() * 2000) + 1))
+  }
+
   return (
     
     <div>

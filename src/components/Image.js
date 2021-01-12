@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Image({url,id}) {
+function Image({url}) {
     return (
         <div>
-            <img src={url} width="100%" height="100%"/>
+            <img src={url} width="100%" height="100%" alt="placeholder-img"/>
         </div>
 
     )
